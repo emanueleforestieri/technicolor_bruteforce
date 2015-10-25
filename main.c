@@ -15,54 +15,54 @@ static inline bool checkpass(char *pass)
 {
     /*Check the password, FUNCTIONS ORDER FOR SPEED*/
 
-	  /*There can be no more than two consecutive identical characters*/
-	  for(short i=0; i<8; i++)
-	  {
-		  if(pass[i]==pass[i+1])
-		  {
-			  i++;
-			  if(pass[i]==pass[i+1])
-				  return 0;
-		  }
-	  }
+    /*There can be no more than two consecutive identical characters*/
+    for(short i=0; i<8; i++)
+    {
+        if(pass[i]==pass[i+1])
+        {
+            i++;
+	    if(pass[i]==pass[i+1])
+	       return 0;
+        }
+    }
 
-	  /*There can be no more than 5 characters A-F and 9 numbers*/
-	  short charactersAF=0,numbers=0;
-	  for(short i=0; i<10; i++)
-	  {
-		  if((pass[i]>='A')&&(pass[i]<='F'))
-			  charactersAF++;
-		  else
-			  numbers++;
-	  }
-	  if((charactersAF>5)||(numbers>9))
-		  return 0;
-
-    /*There can be no more than three identical characters*/
-	  for(short i=0; i<16; i++)
-		  if(contac(pass, characters[i])>3)
+    /*There can be no more than 5 characters A-F and 9 numbers*/
+    short charactersAF=0,numbers=0;
+    for(short i=0; i<10; i++)
+    {
+        if((pass[i]>='A')&&(pass[i]<='F'))
+    	    charactersAF++;
+	else
+	    numbers++;
+    }
+    if((charactersAF>5)||(numbers>9))
         return 0;
 
+    /*There can be no more than three identical characters*/
+    for(short i=0; i<16; i++)
+        if(contac(pass, characters[i])>3)
+            return 0;
+
     /*if the password is valid than return true/1*/
-	  return 1;
+    return 1;
 }
 void brute(char *pass,short ind)
 {
     for(register short i=0;i<16;i++)
     {
-      pass[ind]=characters[i];
-      if (ind==9)
-      {
-        if(checkpass(pass))
-		    	printf("%s\n",pass);
-      }
-      else brute(pass,ind+1);
+        pass[ind]=characters[i];
+        if (ind==9)
+        {
+            if(checkpass(pass))
+	   	printf("%s\n",pass);
+        }
+        else brute(pass,ind+1);
     }
 }
 int main(void)
 {
     char pass[10+1]="xxxxxxxxxx";
-	  fprintf(stderr,"\n[*] Password generation...\n\n");
-	  brute(pass,0);
+    fprintf(stderr,"\n[*] Password generation...\n\n");
+    brute(pass,0);
     return EXIT_SUCCESS;
 }
