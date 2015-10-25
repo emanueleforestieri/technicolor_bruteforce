@@ -8,7 +8,7 @@ When using gcc, use the parameter -std=c99 and -O3
 
 ## Input/Output ##
 
-Returns password on stdout and errors on stderr.
+Returns password on stdout, errors and notice on stderr.
 
 Updates: [GitHub] (https://github.com/emanueleforestieri/technicolor_random)
 
