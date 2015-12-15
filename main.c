@@ -19,7 +19,6 @@
  */
  
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
@@ -49,12 +48,7 @@ static inline bool checkpass(char *pass)
     /*There can be no more than 5 characters A-F and 9 numbers*/
     short charactersAF=0,numbers=0;
     for(short i=0; i<10; i++)
-    {
-        if((pass[i]>='A')&&(pass[i]<='F'))
-    	    charactersAF++;
-	else
-	    numbers++;
-    }
+    	(pass[i]>='A' && pass[i]<='F') ? charactersAF++ : numbers++;
     if((charactersAF>5)||(numbers>9))
         return 0;
 
@@ -66,7 +60,7 @@ static inline bool checkpass(char *pass)
     /*if the password is valid than return true/1*/
     return 1;
 }
-void brute(char *pass,short ind)
+static inline void brute(char *pass,short ind)
 {
     for(register short i=0;i<16;i++)
     {
@@ -82,7 +76,8 @@ void brute(char *pass,short ind)
 int main(void)
 {
     char pass[10+1]="xxxxxxxxxx";
+    fprintf(stderr,"\n[+] There are 10897286400 possible combinations");
     fprintf(stderr,"\n[*] Password generation...\n\n");
     brute(pass,0);
-    return EXIT_SUCCESS;
+    return 0;
 }
