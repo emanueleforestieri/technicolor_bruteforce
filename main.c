@@ -60,7 +60,7 @@ static inline bool checkpass(char *pass)
     /*if the password is valid than return true/1*/
     return 1;
 }
-static inline void brute(char *pass,short ind)
+static inline void bruteforce(char *pass,short ind)
 {
     for(register short i=0;i<16;i++)
     {
@@ -70,7 +70,7 @@ static inline void brute(char *pass,short ind)
             if(checkpass(pass))
 	   	printf("%s\n",pass);
         }
-        else brute(pass,ind+1);
+        else bruteforce(pass,ind+1);
     }
 }
 int main(void)
@@ -78,6 +78,6 @@ int main(void)
     char pass[10+1]="xxxxxxxxxx";
     fprintf(stderr,"\n[+] There are 10897286400 possible combinations");
     fprintf(stderr,"\n[*] Password generation...\n\n");
-    brute(pass,0);
+    bruteforce(pass,0);
     return 0;
 }
