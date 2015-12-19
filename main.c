@@ -76,7 +76,6 @@ static inline void bruteforce(char *pass,short ind)
 int main(void)
 {
     char pass[10+1]="xxxxxxxxxx";
-    fprintf(stderr,"\n[+] There are 10897286400 possible combinations");
     fprintf(stderr,"\n[*] Password generation...\n\n");
     bruteforce(pass,0);
     return 0;
