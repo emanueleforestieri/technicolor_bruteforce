@@ -1,3 +1,6 @@
+# 0.3 [19/12/2015]
+ - Removed number of combinations
+
 # 0.2 [15/12/2015]
  - Stable release
  - Improved code 
