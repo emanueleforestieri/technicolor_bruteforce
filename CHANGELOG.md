@@ -1,3 +1,7 @@
+# 0.4 [08/02/2016]
+ - Added define for byte
+ - Optimized with byte
+
 # 0.3 [19/12/2015]
  - Removed number of combinations
 
