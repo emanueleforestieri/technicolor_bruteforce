@@ -24,6 +24,8 @@
 
 #define byte char
 
+static const char characters[] = "0123456789ABCDEF";
+
 static inline byte contac(register char *s,  char c) /*count how many times there is in the string s*/
 {
     byte n=0;
@@ -32,7 +34,6 @@ static inline byte contac(register char *s,  char c) /*count how many times ther
 }
 static bool checkpass(char *pass)
 {
-    extern static const char characters[] = "0123456789ABCDEF";
     /*Check the password, FUNCTIONS ORDER FOR SPEED*/
 
     /*There can be no more than two consecutive identical characters*/
