@@ -1,3 +1,6 @@
+# 0.4.2 [19/02/2016]
+ - Fix error in compiling
+
 # 0.4.1 [17/02/2016]
  - Optimized with declaration inside the function
  - Improved code with extern, static and inline
