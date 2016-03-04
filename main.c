@@ -37,17 +37,6 @@ static bool checkpass(char *pass)
 {
     /*Check the password, FUNCTIONS ORDER FOR SPEED*/
 
-    /*There can be no more than two consecutive identical characters*/
-//    for(byte i=0; i<8; i++)
-//    {
-//        if(pass[i]==pass[i+1])
-//        {
-//            i++;
-//            if(pass[i]==pass[i+1])
-//                return 0;
-//        }
-//    }
-
     /*There can be no more than 5 characters A-F and 9 numbers*/
     byte charactersAF=0,numbers=0;
     for(byte i=0; i<10; i++)
