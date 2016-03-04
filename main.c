@@ -1,6 +1,6 @@
 /*
  * Copyright 2015 Emanuele Forestieri <forestieriemanuele@gmail.com>
- *  
+ *
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
  */
- 
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -26,7 +26,8 @@
 
 static const char characters[] = "0123456789ABCDEF";
 
-static inline byte contac(register char *s,  char c) /*count how many times there is in the string s*/
+
+static inline byte countc(register char *s,  char c) /*count how many times there is c in the string s*/
 {
     byte n=0;
     while(*s) if(*s++==c) n++;
@@ -37,15 +38,15 @@ static bool checkpass(char *pass)
     /*Check the password, FUNCTIONS ORDER FOR SPEED*/
 
     /*There can be no more than two consecutive identical characters*/
-    for(byte i=0; i<8; i++)
-    {
-        if(pass[i]==pass[i+1])
-        {
-            i++;
-	    if(pass[i]==pass[i+1])
-	       return 0;
-        }
-    }
+//    for(byte i=0; i<8; i++)
+//    {
+//        if(pass[i]==pass[i+1])
+//        {
+//            i++;
+//            if(pass[i]==pass[i+1])
+//                return 0;
+//        }
+//    }
 
     /*There can be no more than 5 characters A-F and 9 numbers*/
     byte charactersAF=0,numbers=0;
@@ -56,7 +57,7 @@ static bool checkpass(char *pass)
 
     /*There can be no more than three identical characters*/
     for(byte i=0; i<16; i++)
-        if(contac(pass, characters[i])>3)
+        if(countc(pass, characters[i])>3)
             return 0;
 
     /*if the password is valid than return true/1*/
@@ -66,11 +67,15 @@ static inline void bruteforce(char *pass,byte ind)
 {
     for(register byte i=0;i<16;i++)
     {
+        //speed-hack check if there is more two character consecutive
+        if (ind>=2)
+            if (pass[0] == pass[1] && pass[1] == pass[2])
+                continue;
         pass[ind]=characters[i];
         if (ind==9)
         {
             if(checkpass(pass))
-	   	printf("%s\n",pass);
+                printf("%s\n",pass);
         }
         else bruteforce(pass,ind+1);
     }
