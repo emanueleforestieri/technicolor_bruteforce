@@ -1,3 +1,7 @@
+# 0.5.0 [04/03/2016]
+- Optimized with better control
+- Move control in main function
+
 # 0.4.2 [19/02/2016]
  - Fix error in compiling
 
